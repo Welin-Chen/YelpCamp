@@ -1,12 +1,16 @@
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
+// if (process.env.NODE_ENV !== "production") {
+// require("dotenv").config();
+// }
+const dotenv = require("dotenv");
+dotenv.config({ path: __dirname + "/../.env" });
+
 const mongoose = require("mongoose");
 const cities = require("./cities");
 const { places, descriptors } = require("./seedHelpers");
 const Campground = require("../models/campground");
 const axios = require("axios");
-const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/yelp-camp";
+// const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/yelp-camp";
+const dbUrl = process.env.DB_URL;
 
 mongoose.connect(dbUrl);
 
@@ -55,8 +59,8 @@ const seedDB = async () => {
       },
       images: [
         {
-          url: "https://res.cloudinary.com/dy5qpeauf/image/upload/v1649740865/YelpCamp/star_night_kzsnvp.webp",
-          filename: "YelpCamp/star_night_kzsnvp",
+          url: `https://source.unsplash.com/collection/483251/${rand1000}`,
+          filename: "YelpCamp/river_sl8uiq.webp",
         },
         {
           url: "https://res.cloudinary.com/dy5qpeauf/image/upload/v1649579628/YelpCamp/river_sl8uiq.webp",
@@ -64,6 +68,10 @@ const seedDB = async () => {
         },
         {
           url: "https://res.cloudinary.com/dy5qpeauf/image/upload/v1649579645/YelpCamp/start_night2_bcddkn.webp",
+          filename: "YelpCamp/start_night2_bcddkn.webp",
+        },
+        {
+          url: "https://res.cloudinary.com/dy5qpeauf/image/upload/v1649579829/YelpCamp/v2qhyzhersupxginhrwp.webp",
           filename: "YelpCamp/start_night2_bcddkn.webp",
         },
       ],
